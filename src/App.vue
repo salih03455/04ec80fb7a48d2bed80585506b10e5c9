@@ -1,71 +1,35 @@
 <script>
-import HotelDatePicker from 'vue-hotel-datepicker2'
-import 'vue-hotel-datepicker2/dist/vueHotelDatepicker2.css'
+import Header from './components/Header.vue'
 
 export default {
   data() {
     return {
-      trTR: {
-        "check-in": "Giriş",
-        "check-out": "Çıkış",
-        "day-names": ["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pa"],
-        "month-names": [
-          "Ocak",
-          "Şubat",
-          "Mart",
-          "Nisan",
-          "Mayıs",
-          "Haziran",
-          "Temmuz",
-          "Ağustos",
-          "Eylül",
-          "Ekim",
-          "Kasım",
-          "Aralık",
-        ],
-        night: "gece",
-        nights: "gece",
-        tooltip: {
-          halfDayCheckIn: "Rezervasyon müsait",
-          halfDayCheckOut: "Rezervasyon müsait",
-          saturdayToSaturday: "Sadece cumartesiden<br/> cumartesiye",
-          sundayToSunday: "Sadece pazardan<br/> pazara",
-          minimumRequiredPeriod: "%{minNightInPeriod} %{night} en az",
-        },
-        week: "hafta",
-        weeks: "hafta",
-      }
+      
     }
   },
   components: {
-    HotelDatePicker
+    Header
   }
 }
 </script>
 
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    
-    <HotelDatePicker
-      format="DD/MM/YYYY"
-      :showYear="true"
-      :i18n="trTR">
-    </HotelDatePicker>
-    
+    <Header />
+
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -80,5 +44,9 @@ export default {
       color: #42b983;
     }
   }
+}
+
+button {
+  cursor: pointer;
 }
 </style>
