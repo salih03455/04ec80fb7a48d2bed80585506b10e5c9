@@ -39,7 +39,6 @@
     position: relative;
   
     label {
-      color: #6d6d6d;
       font-size: .85rem;
       font-weight: 300;
       letter-spacing: .1rem;
@@ -60,7 +59,7 @@
       }
   
       .calender-header {
-        background: #40739e;
+        background: $base-color;
         color: white;
         margin: 10px auto;
         padding: 3px;
@@ -73,6 +72,10 @@
       color: $base-color;
       position: absolute;
       right: 1rem;
+      bottom: 0;
+      top: 0;
+      height: 15px;
+      margin: auto;
     }
   
     input[type=radio] {
@@ -93,6 +96,12 @@
         }
       }
     }
+
+    input {
+      &[type=text] {
+        padding: 10px 15px;
+      }
+    }
   
     .radio-label {
       padding: 0 10px 20px;
@@ -109,21 +118,6 @@
       &:focus {
         background: #40739e;
         border-color: #40739e;
-      }
-    }
-  
-    &-success {
-      background: #079992;
-      border-color: #079992;
-  
-      &:hover,
-      &:focus {
-        background: #38ada9;
-        border-color: #079992;
-      }
-  
-      &:focus {
-        box-shadow: 0 0 0 0.2rem rgba(7, 153, 146, .5);
       }
     }
   }

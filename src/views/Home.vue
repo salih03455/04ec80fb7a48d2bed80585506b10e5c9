@@ -184,15 +184,16 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '@/assets/scss/variables';
   .bottom-buttons {
     display: flex;
     justify-content: space-between;
-    border: 1px solid #f1f1f1;
+    border: 1px solid $gray-color;
     background-color: #f4f4f4;
-    border-radius: 6px;
+    border-radius: $radius;
     padding: 20px;
     button {
-      border-radius: 6px;
+      border-radius: $radius;
       font-weight: 700;
       font-size: 15px;
       padding: 10px 20px;
