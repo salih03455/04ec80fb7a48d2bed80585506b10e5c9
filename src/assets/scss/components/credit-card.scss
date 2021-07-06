@@ -1,0 +1,101 @@
+.credit-card {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    position: relative;
+    margin-top: 50px;
+
+    &__front,
+    &__back {
+        border-radius: 1rem;
+        box-shadow: 3px 3px #2f3640;
+        height: 190px;
+        max-width: 320px;
+        width: calc(100% - 60px);
+        
+        @media only screen and (min-width: 768px) {
+            width: calc(100% - 30px);
+        }
+    }
+
+    &__front {
+        background: rgb(245, 246, 250);
+        background: linear-gradient(114deg, rgba(220, 221, 225,1.0) 0%,rgba(245, 246, 250,1.0) 100%);
+        margin-bottom: 100px;
+        overflow: hidden;
+        position: relative;
+        top: 50px;
+    }
+
+    &__back {
+        background: rgb(245, 246, 250);
+        background: linear-gradient(114deg, rgba(72, 126, 176,1.0) 0%, rgba(72, 126, 176,1.0) 100%);
+        position: absolute;
+        left: 60px;
+
+        &:before,
+        &:after {
+            content: "";
+            height: 50px;
+            width: 100%;
+            background: #2f3640;
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 30px;
+        }
+
+        &:after {
+            background: #f5f6fa;
+            height: 30px;
+            width: calc(100% - 10px);
+            top: 90px;
+        }
+    }
+
+    &__chip {
+        position: absolute;
+        left: 30px;
+        top: 20px;
+        width: 45px;
+        z-index: 3;
+    }
+
+    &__bg {
+        opacity: 0.07;
+        position: absolute;
+        top: -45%;
+        right: -35%;
+        width: 100%;
+    }
+
+    &__cvc,
+    &__number,
+    &__name,
+    &__exp {
+        color: #718093;
+        position: absolute;
+        z-index: 2;
+        text-shadow: 1px 1px 0 white;
+    }
+
+    &__cvc {
+        right: 20px;
+        top: 90px;
+    }
+
+    &__number {
+        font-size: 1.5rem;
+        left: 30px;
+        top: 90px;
+    }
+
+    &__name {
+        left: 30px;
+        top: 130px;
+    }
+
+    &__exp {
+        right: 60px;
+        top: 130px;
+    }
+}
