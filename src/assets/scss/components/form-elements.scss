@@ -10,7 +10,6 @@
   }
 
   .form-control {
-    border-radius: 0;
 
     &:disabled,
     &[readonly] {
@@ -66,8 +65,6 @@
 }
 
 .btn {
-  border-radius: 0;
-
   &-primary {
     background: #487eb0;
     border-color: #40739e;

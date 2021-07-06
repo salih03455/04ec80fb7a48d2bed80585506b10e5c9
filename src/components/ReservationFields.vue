@@ -2,20 +2,23 @@
   <div class="reservation-fields">
     <div class="row">
       <div class="col-md-12 select-hotel">
-        <i class="fa fa-search"></i>
-        <select
-          name="hotels"
-          id="hotels"
-          @change="onHotelChange($event)">
-          <option value="-1">Rezervasyon yapmak istediğiniz oteli seçiniz.</option>
-          <option
-            v-for="hotel in hotelList"
-            :value="hotel.id"
-            :selected="hotel.id == $store.state.selectedHotel.id"
-            :key="hotel.id">
-            {{ hotel.hotel_name }}
-          </option>
-        </select>
+        <div>
+          <i class="fa fa-search"></i>
+          <select
+            name="hotels"
+            id="hotels"
+            @change="onHotelChange($event)">
+            <option value="-1">Rezervasyon yapmak istediğiniz oteli seçiniz.</option>
+            <option
+              v-for="hotel in hotelList"
+              :value="hotel.id"
+              :selected="hotel.id == $store.state.selectedHotel.id"
+              :key="hotel.id">
+              {{ hotel.hotel_name }}
+            </option>
+          </select>
+        </div>
+        <div class="text-danger" v-if="hotelListError.length">{{ hotelListError }}</div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
@@ -102,6 +105,7 @@
             </option>
           </select>
           <span
+            class="text-danger"
             v-if="$store.state.selectedHotelDetail && $store.state.selectedHotelDetail.child_status != true">
             Bu otel çocuk kabul etmemektedir.
           </span>
@@ -126,7 +130,7 @@ export default {
     return {
       tr,
       hotelList: [],
-      hotelKey: '',
+      hotelListError: '',
     };
   },
   created() {
@@ -138,6 +142,9 @@ export default {
     .then(hotels => {
       this.hotelList = [...hotels]
     })
+    .catch(_ => {
+      this.hotelListError = 'Oteller listelenirken bir hata oluştu!'
+    });
   },
   computed: {
     ...mapState([
@@ -213,19 +220,23 @@ export default {
   margin-bottom: 20px;
   padding: 20px;
   .select-hotel {
-    position: relative;
     margin-bottom: 30px;
-    i {
-      position: absolute;
-      left: 25px;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      height: 24px;
-      font-size: 24px;
-    }
-    select {
-      padding-left: 35px;
+    & > div {
+      &:nth-child(1) {
+        position: relative;
+        i {
+          position: absolute;
+          left: 10px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          height: 24px;
+          font-size: 24px;
+        }
+        select {
+          padding-left: 35px;
+        }
+      }
     }
   }
   .form-group {

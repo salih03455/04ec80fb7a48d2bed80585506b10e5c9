@@ -74,6 +74,7 @@ body {
   }
   input, select {
     border: 1px solid #424142;
+    border-radius: 4px;
     outline: none;
     box-shadow: none;
     width: 100%;
@@ -81,14 +82,20 @@ body {
   }
 
   select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     background-color: transparent;
-    margin: 0;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUxJREFUeNrM1sEJwkAQBdCsngXPHsQO9O5FS7AAMVYgdqAd2IGCDWgFnryLFQiCZ8EGnJUNimiyM/tnk4HNEAg/8y6ZmMRVqz9eUJvRaSbvutCZ347bXVJy/ZnvTmdJ862Me+hAbZCTs6GHpyUi1tTSvPnqTpoWZPUa7W7ncT3vK4h4zVejy8QzM3WhVUO8ykI6jOxoGA4ig3BLHcNFSCGqGAkig2yqgpEiMsjSfY9LxYQg7L6r0X6wS29YJiYQYecemY+wHrXD1+bklGhpAhBDeu/JfIVGxaAQ9sb8CI+CQSJ+QmJg0Ii/EE2MBiIXooHRQhRCkBhNhBcEhLkwf05ZCG8ICCOpk0MULmvDSY2M8UawIRExLIQIEgHDRoghihgRIgiigBEjgiFATBACAgFgghEwSAAGgoBCBBgYAg5hYKAIFYgHBo6w9RRgAFfy160QuV8NAAAAAElFTkSuQmCC);
+    background-size: 12px;
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
     width: 100%;
     font-family: inherit;
     font-size: inherit;
     cursor: inherit;
     line-height: inherit;
+    position: relative;
   }
 
   select::-ms-expand {
