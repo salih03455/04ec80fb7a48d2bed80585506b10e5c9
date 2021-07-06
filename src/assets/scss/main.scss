@@ -1,3 +1,6 @@
-@import "general.scss";
-@import "components/form-elements.scss";
-@import "components/alert.scss";
+@import 'variables';
+@import 'general';
+@import 'components/form';
+@import 'components/reservation-fields';
+@import 'components/rooms';
+@import 'components/payment';

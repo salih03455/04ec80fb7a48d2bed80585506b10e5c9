@@ -1,0 +1,130 @@
+#app {
+  button {
+    cursor: pointer;
+  }
+  
+  input, select {
+    border: 1px solid #424142;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+    height: auto;
+  }
+  
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUxJREFUeNrM1sEJwkAQBdCsngXPHsQO9O5FS7AAMVYgdqAd2IGCDWgFnryLFQiCZ8EGnJUNimiyM/tnk4HNEAg/8y6ZmMRVqz9eUJvRaSbvutCZ347bXVJy/ZnvTmdJ862Me+hAbZCTs6GHpyUi1tTSvPnqTpoWZPUa7W7ncT3vK4h4zVejy8QzM3WhVUO8ykI6jOxoGA4ig3BLHcNFSCGqGAkig2yqgpEiMsjSfY9LxYQg7L6r0X6wS29YJiYQYecemY+wHrXD1+bklGhpAhBDeu/JfIVGxaAQ9sb8CI+CQSJ+QmJg0Ii/EE2MBiIXooHRQhRCkBhNhBcEhLkwf05ZCG8ICCOpk0MULmvDSY2M8UawIRExLIQIEgHDRoghihgRIgiigBEjgiFATBACAgFgghEwSAAGgoBCBBgYAg5hYKAIFYgHBo6w9RRgAFfy160QuV8NAAAAAElFTkSuQmCC);
+    background-size: 12px;
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    position: relative;
+    padding: 10px 15px;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+  
+  
+  .form-group {
+    position: relative;
+  
+    label {
+      color: #6d6d6d;
+      font-size: .85rem;
+      font-weight: 300;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+    }
+  
+    .form-control {
+  
+      &:disabled,
+      &[readonly] {
+        background: transparent;
+      }
+    }
+  
+    .vdp-datepicker {
+      &__calendar {
+        width: 100%;
+      }
+  
+      .calender-header {
+        background: #40739e;
+        color: white;
+        margin: 10px auto;
+        padding: 3px;
+        text-align: center;
+        width: calc(100% - 10px);
+      }
+    }
+  
+    .fa {
+      color: $base-color;
+      position: absolute;
+      right: 1rem;
+    }
+  
+    input[type=radio] {
+      display: none;
+  
+      & + label {
+        border: 1px solid transparent;
+        cursor: pointer;
+        font-weight: 400;
+      }
+  
+      &:checked {
+        & + label {
+          background: #f5f6fa;
+          border-color:#e7f3ff;
+          color: #273c75;
+          font-weight: 700;
+        }
+      }
+    }
+  
+    .radio-label {
+      padding: 0 10px 20px;
+      width: 100%;
+    }
+  }
+  
+  .btn {
+    &-primary {
+      background: #487eb0;
+      border-color: #40739e;
+  
+      &:hover,
+      &:focus {
+        background: #40739e;
+        border-color: #40739e;
+      }
+    }
+  
+    &-success {
+      background: #079992;
+      border-color: #079992;
+  
+      &:hover,
+      &:focus {
+        background: #38ada9;
+        border-color: #079992;
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(7, 153, 146, .5);
+      }
+    }
+  }
+}

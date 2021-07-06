@@ -15,7 +15,7 @@
     </div>
 
     <div class="select-room mt-5" v-if="parseInt(step) == 2">
-      <select-room />
+      <rooms />
       <div class="alert alert-danger mb-3" v-if="(!selectedRoomType || !selectedRoomScenic) && alertRoom">
         Lütfen seçim yapın.<br>
         <span v-if="!selectedRoomType">Oda tipi seçmediniz.</span> -
@@ -62,7 +62,7 @@ import { mapState } from 'vuex'; // mapActions
 
 import NavigationMenu from '@/components/NavigationMenu.vue';
 import ReservationFields from '@/components/ReservationFields.vue';
-import SelectRoom from '@/components/SelectRoom.vue';
+import Rooms from '@/components/Rooms.vue';
 import Payment from '@/components/Payment.vue';
 
 export default {
@@ -80,7 +80,7 @@ export default {
   components: {
     NavigationMenu,
     ReservationFields,
-    SelectRoom,
+    Rooms,
     Payment
   },
   computed: {

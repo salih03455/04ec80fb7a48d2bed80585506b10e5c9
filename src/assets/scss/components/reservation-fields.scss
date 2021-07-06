@@ -1,0 +1,40 @@
+#app {
+  .reservation-fields {
+    border: 1px solid #f1f1f1;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 20px;
+    .select-hotel {
+      margin-bottom: 30px;
+      & > div {
+        &:nth-child(1) {
+          position: relative;
+          i {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 24px;
+            font-size: 24px;
+          }
+          select {
+            padding-left: 35px;
+          }
+        }
+      }
+    }
+    .form-group {
+      label {
+        text-transform: unset;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+    }
+
+    .vdp-datepicker__calendar .cell.selected {
+      color: #fff;
+    }
+  }
+}

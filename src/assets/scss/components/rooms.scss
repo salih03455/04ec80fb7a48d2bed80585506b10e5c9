@@ -1,0 +1,57 @@
+#app {
+  .select-room {
+    &-info {
+      border: 1px solid #f1f1f1;
+      background-color: #f4f4f4;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 30px;
+      .name {
+        font-size: 20px;
+        font-weight: 700;
+        .city {
+          font-weight: 400;
+          font-size: 17px;
+        }
+      }
+    }
+    &-type {
+      .title {
+        font-weight: 700;
+        border-bottom: 1px solid #f1f1f1;
+        margin: 15px;
+        padding: 10px 0;
+      }
+      label {
+        display: block;
+        border: 1px solid #f1f1f1 !important;
+        border-radius: 6px;
+        padding: 20px !important;
+        img {
+          width: 100%;
+          max-width: 100% !important;
+          display: block;
+        }
+        & > span {
+          font-weight: 700;
+          display: block;
+          padding-bottom: 5px;
+          text-transform: initial;
+          font-size: 14px;
+        }
+        & > div {
+          margin-top: 15px;
+          display: flex;
+          span {
+            text-transform: initial;
+            &.price {
+              margin-left: auto;
+              font-size: 16px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
