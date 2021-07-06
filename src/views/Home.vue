@@ -16,10 +16,11 @@
 
     <div class="select-room mt-5" v-if="parseInt(step) == 2">
       <rooms />
-      <div class="alert alert-danger mb-3" v-if="(!selectedRoomType || !selectedRoomScenic) && alertRoom">
-        Lütfen seçim yapın.<br>
-        <span v-if="!selectedRoomType">Oda tipi seçmediniz.</span> -
-        <span v-if="!selectedRoomScenic">Manzara seçmediniz.</span>
+      <div
+        class="alert alert-danger mb-3"
+        v-if="(!selectedRoomType || !selectedRoomScenic) && alertRoom">
+        <div v-if="!selectedRoomType">Lütfen oda seçimi yapınız.</div>
+        <div v-if="!selectedRoomScenic">Lütfen manzara seçimi yapınız.</div>
       </div>
     </div>
 
