@@ -298,7 +298,7 @@
           <div class="payment-info-price">
             <div class="item">
               <span>Oda Fiyatı</span>
-              <span>{{ price }}</span>
+              <span>{{ price }} TL</span>
             </div>
             <div class="item">
               <span>Fiyat Etki Oranı</span>
@@ -453,10 +453,10 @@ export default {
         "card_cvv": this.cardCvv
       }
 
-router.push('payment-completed')
       this.axios.post('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotel-bookings', data)
       .then(response => {
         console.log(response)
+        router.push('success')
       })
       .catch(_ => {
       this.paymentError = 'Rezervasyon sırasında bir hata oluştu!'

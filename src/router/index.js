@@ -1,22 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import PaymentCompleted from '../views/PaymentCompleted.vue';
 
 Vue.use(VueRouter);
 
 
 const routes = [
   {
-    path: 'payment-completed',
-    name: 'PaymentCompleted',
-    component: PaymentCompleted,
+    path: '/success',
+    name: 'Success',
+    component: () => import('../views/Success.vue')
   },
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    
+    component: Home
   }
 ];
 

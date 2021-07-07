@@ -59,8 +59,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'; // mapActions
-
+import { mapState } from 'vuex';
 import NavigationMenu from '@/components/NavigationMenu.vue';
 import ReservationFields from '@/components/ReservationFields.vue';
 import Rooms from '@/components/Rooms.vue';
