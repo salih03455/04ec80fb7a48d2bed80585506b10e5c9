@@ -3,30 +3,40 @@
     <div class="row">
       <div class="col-md-7">
         <div class="card-form">
-          
-          
-          
           <div class="card-list">
             <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
               <div class="card-item__side -front">
                 <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }" v-bind:style="focusElementStyle" ref="focusElement"></div>
                 <div class="card-item__cover">
                   <img
-                  v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+                    :src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'"
+                    class="card-item__bg"
+                  />
                 </div>
                 
                 <div class="card-item__wrapper">
                   <div class="card-item__top">
-                    <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
+                    <img
+                      src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
+                      class="card-item__chip"
+                    />
                     <div class="card-item__type">
                       <transition name="slide-fade-up">
-                        <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg">
+                        <img
+                          :src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'"
+                          v-if="getCardType"
+                          :key="getCardType"
+                          alt=""
+                          class="card-item__typeImg"
+                        />
                       </transition>
                     </div>
                   </div>
                   <label for="cardNumber" class="card-item__number" ref="cardNumber">
                     <template v-if="getCardType === 'amex'">
-                    <span v-for="(n, $index) in amexCardMask" :key="$index">
+                    <span
+                      v-for="(n, $index) in amexCardMask"
+                      :key="$index">
                       <transition name="slide-fade-up">
                         <div
                           class="card-item__numberItem"
@@ -38,11 +48,12 @@
                           {{cardNumber[$index]}}
                         </div>
                         <div
+                          v-else
                           class="card-item__numberItem"
                           :class="{ '-active' : n.trim() === '' }"
-                          v-else
-                          :key="$index + 1"
-                        >{{n}}</div>
+                          :key="$index + 1">
+                          {{ n }}
+                        </div>
                       </transition>
                     </span>
                     </template>
@@ -80,11 +91,11 @@
                               v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')"
                               v-if="$index === $index"
                               :key="$index + 1">
-                              {{n}}
+                              {{ n }}
                             </span>
                           </transition-group>
                         </div>
-                        <div class="card-item__name" v-else key="2"></div>
+                        <div class="card-item__name" v-else key="2">---- ----</div>
                       </transition>
                     </label>
                     <div class="card-item__date" ref="cardDate">
@@ -92,13 +103,13 @@
                       <label for="cardMonth" class="card-item__dateItem">
                         <transition name="slide-fade-up">
                           <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
-                          <span v-else key="2"></span>
+                          <span v-else key="2">--</span>
                         </transition>
-                      </label>
+                      </label> /
                       <label for="cardYear" class="card-item__dateItem">
                         <transition name="slide-fade-up">
                           <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
-                          <span v-else key="2"></span>
+                          <span v-else key="2">--</span>
                         </transition>
                       </label>
                     </div>
@@ -114,80 +125,145 @@
                 </div>
                 <div class="card-item__band"></div>
                 <div class="card-item__cvv">
-                    <div class="card-item__cvvTitle">CVV</div>
-                    <div class="card-item__cvvBand">
-                      <span v-for="(n, $index) in cardCvv" :key="$index">
-                        *
-                      </span>
-
+                  <div class="card-item__cvvTitle">CVV</div>
+                  <div class="card-item__cvvBand">
+                    <span v-for="(n, $index) in cardCvv" :key="$index">
+                      *
+                    </span>
                   </div>
-                    <div class="card-item__type">
-                        <img
-                          :src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'"
-                          v-if="getCardType"
-                          class="card-item__typeImg"
-                        />
-                    </div>
+                  <div class="card-item__type">
+                    <img
+                      :src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'"
+                      v-if="getCardType"
+                      class="card-item__typeImg"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <form @submit.prevent="handleSubmit">
-          <div class="card-form__inner">
-            <div class="card-input">
-              <label for="cardNumber" class="card-input__label">Kart No</label>
-              <input type="text" id="cardNumber" class="card-input__input" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardNumber" autocomplete="off">
-              <div v-if="submitted && !$v.number.required" class="invalid-feedback d-block">Lütfen kart numarası giriniz.</div>
-            </div>
-            <div class="card-input">
-              <label for="cardName" class="card-input__label">İsim Soyisim</label>
-              <input type="text" id="cardName" class="card-input__input" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardName" autocomplete="off">
-            </div>
-            <div class="card-form__row">
-              <div class="card-form__col">
-                <div class="card-form__group">
-                  <label for="cardMonth" class="card-input__label">Son Kullanma Tarihi</label>
-                  <select
-                    class="card-input__input -select"
-                    id="cardMonth"
-                    v-model="cardMonth"
-                    v-on:focus="focusInput"
-                    v-on:blur="blurInput"
-                    data-ref="cardDate">
-                    <option value="" disabled selected>Ay</option>
-                    <option
-                      v-for="n in 12"
-                      :value="n < 10 ? '0' + n : n"
-                      :disabled="n < minCardMonth"
-                      :key="n">
-                      {{ n < 10 ? '0' + n : n }}
-                    </option>
-                  </select>
-                  <select class="card-input__input -select" id="cardYear" v-model="cardYear" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
-                    <option value="" disabled selected>Yıl</option>
-                    <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
+            <div class="card-form__inner">
+              <div class="card-input">
+                <label for="cardNumber" class="card-input__label">Kart No</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  class="card-input__input"
+                  v-mask="generateCardNumberMask"
+                  v-model="cardNumber"
+                  @focus="focusInput"
+                  @blur="blurInput"
+                  data-ref="cardNumber"
+                  autocomplete="off"
+                />
+                <div
+                  v-if="submitted && !$v.cardNumber.required"
+                  class="invalid-feedback d-block">
+                  Lütfen kart numarası giriniz.
+                </div>
+                <div
+                  v-if="submitted && !$v.cardNumber.minLength"
+                  class="invalid-feedback d-block">
+                  Lütfen kart numarasını eksiksiz giriniz.
+                  </div>
+              </div>
+              <div class="card-input">
+                <label for="cardName" class="card-input__label">İsim Soyisim</label>
+                <input
+                  type="text"
+                  id="cardName"
+                  class="card-input__input"
+                  v-model="cardName"
+                  @focus="focusInput"
+                  @blur="blurInput"
+                  data-ref="cardName"
+                  autocomplete="off"
+                />
+                <div
+                  v-if="submitted && !$v.cardName.required"
+                  class="invalid-feedback d-block">
+                  Lütfen kart üzerindeki ismi kontrol ediniz.
+                </div>
+              </div>
+              <div class="card-form__row">
+                <div class="card-form__col">
+                  <div class="card-form__group">
+                    <label for="cardMonth" class="card-input__label">Son Kullanma Tarihi</label>
+                    <select
+                      class="card-input__input -select"
+                      id="cardMonth"
+                      v-model="cardMonth"
+                      @focus="focusInput"
+                      @blur="blurInput"
+                      data-ref="cardDate">
+                      <option value="" disabled selected>Ay</option>
+                      <option
+                        v-for="n in 12"
+                        :value="n < 10 ? '0' + n : n"
+                        :disabled="n < minCardMonth"
+                        :key="n">
+                        {{ n < 10 ? '0' + n : n }}
+                      </option>
+                    </select>
+                    <select
+                      class="card-input__input -select"
+                      id="cardYear"
+                      v-model="cardYear"
+                      @focus="focusInput"
+                      @blur="blurInput"
+                      data-ref="cardDate">
+                      <option value="" disabled selected>Yıl</option>
+                      <option :value="$index + minCardYear" v-for="(n, $index) in 12" :key="n">
                         {{$index + minCardYear}}
-                    </option>
-                  </select>
+                      </option>
+                    </select>
+                    <div
+                      v-if="submitted && (!$v.cardMonth.required || !$v.cardYear.required)"
+                      class="invalid-feedback d-block">
+                      Lütfen son kullanma tarihini kontrol ediniz.
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="card-form__col -cvv">
-                <div class="card-input">
-                  <label for="cardCvv" class="card-input__label">CVV</label>
-                  <input type="text" class="card-input__input" id="cardCvv" v-mask="'####'" maxlength="4" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(false)" autocomplete="off">
+                <div class="card-form__col -cvv">
+                  <div class="card-input">
+                    <label for="cardCvv" class="card-input__label">CVV</label>
+                    <input
+                      type="text"
+                      class="card-input__input"
+                      id="cardCvv"
+                      v-mask="'####'"
+                      maxlength="4"
+                      v-model="cardCvv"
+                      @focus="flipCard(true)"
+                      @blur="flipCard(false)"
+                      autocomplete="off"
+                    />
+                    <div
+                      v-if="submitted && !$v.cardCvv.required"
+                      class="invalid-feedback d-block">
+                      Lütfen cvv kodu giriniz.
+                    </div>
+                    <div
+                      v-if="submitted && !$v.cardCvv.minLength"
+                      class="invalid-feedback d-block">
+                      Lütfen cvv kodunu eksiksiz giriniz.
+                    </div>
+                    <div
+                      v-if="submitted && !$v.cardCvv.maxLength"
+                      class="invalid-feedback d-block">
+                      Cvv kodu en fazla 4 karakter olabilir.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
           </form>
-
         </div>
       </div>
 
       <div class="col-md-5">
-        
         <div class="payment-info" v-if="checkInDate && checkOutDate">
           <div class="payment-info-title">
             {{ selectedHotel.name }}
@@ -240,20 +316,19 @@
               <div>{{ totalPrice }} TL</div>
             </div>
           </div>
-          
+
           <hr class="clearfix">
 
         </div>
-        
       </div>
     </div>
+    <div class="alert alert-danger" v-if="paymentError.length">{{ paymentError }}</div>
   </div>
 </template>
 
 <script>
-// import { required, minLength } from 'vuelidate/lib/validators';
 import { mapState } from 'vuex';
-import { required, minLength } from 'vuelidate/lib/validators';
+import { required, minLength, maxLength } from 'vuelidate/lib/validators';
 import router from '@/router';
 
 export default {
@@ -273,7 +348,8 @@ export default {
       cardNumberTemp: "",
       isCardFlipped: false,
       focusElementStyle: null,
-      isInputFocused: false
+      isInputFocused: false,
+      paymentError: ''
     };
   },
   mounted() {
@@ -289,6 +365,7 @@ export default {
       'personCount',
       'childCount',
       'selectedHotel',
+      'selectedHotelDetail',
       'price',
       'totalPrice',
       'day',
@@ -329,11 +406,11 @@ export default {
     }
   },
   validations: {
-    number: {
+    cardNumber: {
       required,
       minLength: minLength(19)
     },
-    name: {
+    cardName: {
       required,
       minLength: minLength(6)
     },
@@ -345,16 +422,45 @@ export default {
       required,
       minLength: minLength(2)
     },
-    cvc: {
+    cardCvv: {
       required,
-      minLength: minLength(3)
+      minLength: minLength(3),
+      maxLength: maxLength(4)
     }
   },
   methods: {
     handleSubmit() {
       this.submitted = true
-      console.log('handle submit: ', this.cardNumber)
-      // router.push({ path: '/payment-completed' })
+      
+      if (this.$v.$invalid) { // gecersiz form
+        return
+      }
+
+      const data = {
+        "hotel_id": parseInt(this.selectedHotel.id),
+        "start_date": this.moment(this.checkInDate).format('YYYY-MM-DD'),
+        "end_date": this.moment(this.checkOutDate).format('YYYY-MM-DD'),
+        "adult": this.personCount,
+        "child": this.childCount,
+        "room_type": this.selectedHotelDetail.room_type.filter(type => type.title == this.selectedRoomType)[0].id,
+        "room_scenic": this.selectedHotelDetail.room_scenic.filter(sc => sc.title == this.selectedRoomScenic)[0].id,
+        "price": this.totalPrice,
+        "coupon_code": null,
+        "card_name": this.cardName,
+        "card_number": this.cardNumber.split(' ').join(''),
+        "card_date_month": this.cardMonth,
+        "card_date_year": (typeof this.cardYear) == 'number' ?  JSON.stringify(this.cardYear) : this.cardYear,
+        "card_cvv": this.cardCvv
+      }
+
+router.push('payment-completed')
+      this.axios.post('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotel-bookings', data)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(_ => {
+      this.paymentError = 'Rezervasyon sırasında bir hata oluştu!'
+    });
     },
     flipCard (status) { 
       this.isCardFlipped = status;

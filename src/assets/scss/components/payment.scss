@@ -126,7 +126,7 @@
           text-align: center;
           font-weight: 700;
           div {
-            font-size: 22px;
+            font-size: 30px;
           }
         }
       }
@@ -199,7 +199,6 @@
       &__side {
         border-radius: 15px;
         overflow: hidden;
-        // box-shadow: 3px 13px 30px 0px rgba(11, 19, 41, 0.5);
         box-shadow: 0 20px 60px 0 rgba(14, 42, 90, 0.55);
         transform: perspective(2000px) rotateY(0deg) rotateX(0deg) rotate(0deg);
         transform-style: preserve-3d;
@@ -438,7 +437,7 @@
       &__dateTitle {
         opacity: 0.7;
         font-size: 13px;
-        padding-bottom: 6px;
+        margin-bottom: 0;
         width: 100%;
     
         @media screen and (max-width: 480px) {

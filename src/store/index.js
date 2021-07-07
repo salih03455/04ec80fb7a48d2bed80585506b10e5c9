@@ -111,7 +111,7 @@ export default new Vuex.Store({
 
   actions: {
     fetchHotels({ commit }) {
-      fetch("https://5f6d939160cf97001641b049.mockapi.io/tkn/hotels")
+      this.axios.get("https://5f6d939160cf97001641b049.mockapi.io/tkn/hotels")
         .then((data) => {
           return data.json();
         })

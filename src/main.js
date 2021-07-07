@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/assets/scss/main.scss';
 
@@ -16,6 +20,8 @@ Vue.filter('VMask', VueMaskFilter)
 
 import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
+
+Vue.use(VueAxios, axios)
 
 import moment from 'moment';
 Vue.prototype.moment = moment;

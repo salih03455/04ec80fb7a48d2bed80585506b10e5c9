@@ -135,12 +135,9 @@ export default {
   },
   created() {
     // Otelleri getir:
-    fetch('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotels')
-    .then(data => {
-      return data.json()
-    })
-    .then(hotels => {
-      this.hotelList = [...hotels]
+    this.axios.get('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotels')
+    .then(response => {
+      this.hotelList = [...response.data]
     })
     .catch(_ => {
       this.hotelListError = 'Oteller listelenirken bir hata oluştu!'
@@ -183,10 +180,9 @@ export default {
         this.$store.commit('updateSelectedHotelId', hotelId)
         this.$store.commit('updateSelectedHotelName', hotelName)
         
-        fetch('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotel-details')
-        .then(data => data.json())
-        .then(hotelDetail => {
-          const selectedHotelDetail = hotelDetail.filter(hotel => hotel.id === hotelId)[0]
+        this.axios.get('https://5f6d939160cf97001641b049.mockapi.io/tkn/hotel-details')
+        .then(response => {
+          const selectedHotelDetail = response.data.filter(hotel => hotel.id === hotelId)[0]
           // Store'ye kaydet:
           this.$store.commit('updateSelectedHotelDetail', selectedHotelDetail)
           this.$store.commit('updateSelectedHotelCity', selectedHotelDetail.city)

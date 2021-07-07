@@ -104,9 +104,6 @@ export default {
     ]),
   },
   methods: {
-    // ...mapActions([
-    //   'updateStep'
-    // ]),
     nextStep() {
       if (this.stepControl(this.step)) { // validation true
         this.$store.commit('updateStep', parseInt(this.step) + 1);
@@ -123,8 +120,7 @@ export default {
           
           const pr = this.day * (this.price + (parseInt((this.price * this.rate) / 100)))
           const totalPrice = (this.childCount * (parseInt(pr / 2))) + (this.personCount * pr)
-          
-          
+
           this.$store.commit('updateTotalPrice', totalPrice)
         }
 
@@ -176,7 +172,6 @@ export default {
       this.form.checkOutDate = this.checkOutDate;
       this.form.roomType = this.roomType;
       this.form.selectedRoomScenic = this.selectedRoomScenic;
-      console.log(this.form);
       this.$refs.payment.handleSubmit();
     }
   }
